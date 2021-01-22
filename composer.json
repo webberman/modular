@@ -1,0 +1,36 @@
+{
+    "name": "webberman/modular",
+    "description": "Modular system for Laravel projects",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["modules","architecture", "modular", "laravel"],
+    "homepage": "https://webberman.com",
+    "bin": ["modular"],
+    "authors": [
+        {
+            "name": "Chibuzor Anyagha",
+            "email": "hello@chibuzor.com"
+        }
+    ],
+    "require": {
+        "ext-dom": "*",
+        "symfony/console": "*",
+        "symfony/filesystem": "*",
+        "symfony/finder": "*",
+        "symfony/process": "*"
+    },
+    "require-dev": {
+        "laravel/framework": "^8.23",
+        "livewire/livewire": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webberman\\Modular\\": "src/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

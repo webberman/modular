@@ -1,0 +1,49 @@
+#!/usr/bin/env php
+<?php
+
+if (file_exists('./vendor/autoload.php')) {
+    require './vendor/autoload.php';
+} else if(file_exists(__DIR__.'/vendor/autoload.php')) {
+    require __DIR__.'/vendor/autoload.php';
+} else {
+    require __DIR__.'/../../../bootstrap/autoload.php';
+}
+
+if (file_exists('./bootstrap/app.php')) {
+    $laravel = require'./bootstrap/app.php';
+} else {
+    $laravel = require __DIR__.'/../../../bootstrap/app.php';
+}
+
+$commands = [
+    new Webberman\Modular\Console\Commands\InitMicroCommand(),
+    new Webberman\Modular\Console\Commands\InitMonolithCommand(),
+    new Webberman\Modular\Console\Commands\ChangeSourceNamespaceCommand(),
+    new Webberman\Modular\Console\Commands\JobMakeCommand(),
+    new Webberman\Modular\Console\Commands\JobDeleteCommand(),
+    new Webberman\Modular\Console\Commands\ServiceMakeCommand(),
+    new Webberman\Modular\Console\Commands\ServiceDeleteCommand(),
+    new Webberman\Modular\Console\Commands\FeatureMakeCommand(),
+    new Webberman\Modular\Console\Commands\FeatureDeleteCommand(),
+    new Webberman\Modular\Console\Commands\ControllerMakeCommand(),
+    new Webberman\Modular\Console\Commands\LivewireMakeCommand(),
+    new Webberman\Modular\Console\Commands\MigrationMakeCommand(),
+    new Webberman\Modular\Console\Commands\ServicesListCommand(),
+    new Webberman\Modular\Console\Commands\FeaturesListCommand(),
+
+    new Webberman\Modular\Console\Commands\ModelMakeCommand(),
+    new Webberman\Modular\Console\Commands\ModelDeleteCommand(),
+    new Webberman\Modular\Console\Commands\RequestMakeCommand(),
+    new Webberman\Modular\Console\Commands\RequestDeleteCommand(),
+    new Webberman\Modular\Console\Commands\PolicyMakeCommand(),
+    new Webberman\Modular\Console\Commands\PolicyDeleteCommand(),
+
+    new Webberman\Modular\Console\Commands\OperationMakeCommand(),
+    new Webberman\Modular\Console\Commands\OperationDeleteCommand(),
+];
+
+$app = new Symfony\Component\Console\Application('Modular', '1.0.0');
+
+array_walk($commands, [$app, 'add']);
+
+$app->run();
